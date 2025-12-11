@@ -148,7 +148,10 @@ export default function VizIndexPage() {
       </div>
       <div className="grid gap-5 md:grid-cols-3">
       {visualizations.map((v) => (
-        <Card key={v.slug} className="flex flex-col surface-card rounded-xl transition hover:-translate-y-1">
+        <Card
+          key={v.slug}
+          className="flex flex-col surface-card rounded-xl overflow-hidden transition hover:-translate-y-1"
+        >
           <CardContent className="space-y-3 p-0">
             <div className="h-48 w-full overflow-hidden border-b border-white/10 rounded-t-xl">
               <Preview
