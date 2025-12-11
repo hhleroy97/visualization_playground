@@ -126,35 +126,33 @@ export default function Home() {
         </div>
         <div className="space-y-3">
           <p className="wire-text text-xs">Live previews</p>
-          <div className="relative">
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-white/4 via-white/2 to-white/4 blur-3xl opacity-50 pointer-events-none" />
-            <div className="snap-x snap-mandatory overflow-x-auto overflow-y-hidden rounded-2xl border border-white/8 bg-white/2 p-3 flex gap-4 h-[70vh]">
+          <div className="relative -mx-6 md:-mx-10">
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-white/6 via-white/3 to-white/6 blur-3xl opacity-50 pointer-events-none" />
+            <div className="snap-x snap-mandatory overflow-x-auto overflow-y-hidden h-[82vh] flex gap-5 px-2 md:px-4">
               {liveScroller.map((v) => (
                 <div
                   key={v.slug}
-                  className="snap-start min-w-[80vw] lg:min-w-[60vw] h-full surface-card rounded-xl border border-white/10 relative overflow-hidden"
+                  className="snap-start min-w-[90vw] lg:min-w-[75vw] h-full relative rounded-3xl overflow-hidden border border-white/10 bg-black/60"
                 >
-                  <div className="absolute inset-0 opacity-15 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.3),transparent_40%),radial-gradient(circle_at_80%_30%,rgba(180,210,255,0.3),transparent_45%)]" />
-                  <div className="grid lg:grid-cols-[1.3fr_0.7fr] h-full gap-4 p-4 relative z-10">
-                    <div className="h-full w-full overflow-hidden rounded-lg border border-white/10 bg-black/60">
-                      <Preview
-                        componentName={v.component}
-                        defaults={v.params.reduce<Record<string, unknown>>((acc, p) => {
-                          acc[p.name] = p.defaultValue;
-                          return acc;
-                        }, {})}
-                      />
-                    </div>
-                    <div className="space-y-3 flex flex-col justify-center">
+                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_42%),radial-gradient(circle_at_80%_30%,rgba(180,210,255,0.25),transparent_48%)]" />
+                  <Preview
+                    componentName={v.component}
+                    defaults={v.params.reduce<Record<string, unknown>>((acc, p) => {
+                      acc[p.name] = p.defaultValue;
+                      return acc;
+                    }, {})}
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/40 to-transparent p-6 flex items-end justify-between gap-4">
+                    <div className="space-y-2 max-w-xl">
                       <p className="text-2xl font-semibold glow-heading">{v.title}</p>
                       <p className="text-sm text-muted-foreground">{v.description}</p>
                       <p className="text-xs text-muted-foreground font-mono bg-white/5 px-2 py-1 rounded border border-white/10 inline-block w-fit">
                         /viz/{v.slug}
                       </p>
-                      <Button asChild className="w-fit bg-white/8 text-foreground hover:bg-white/12 border border-white/10">
-                        <Link href={`/viz/${v.slug}`}>Open preview</Link>
-                      </Button>
                     </div>
+                    <Button asChild className="bg-white/12 text-foreground hover:bg-white/16 border border-white/12">
+                      <Link href={`/viz/${v.slug}`}>Open</Link>
+                    </Button>
                   </div>
                 </div>
               ))}
