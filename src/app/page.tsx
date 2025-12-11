@@ -91,9 +91,28 @@ export default function Home() {
   const liveScroller = visualizations.filter((v) => v.featured).slice(0, 8);
 
   return (
-    <div className="space-y-12 w-full max-w-none px-4 md:px-8">
-      <section className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] items-center surface-card p-8 md:p-10 rounded-2xl">
-        <div className="space-y-4">
+    <div className="space-y-12 w-full max-w-none px-0">
+      <section className="relative min-h-screen w-screen overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="snap-x snap-mandatory overflow-x-auto overflow-y-hidden h-full w-full flex gap-6 px-4 md:px-8">
+            {liveScroller.map((v) => (
+              <div
+                key={v.slug}
+                className="snap-start min-w-[100vw] lg:min-w-[85vw] h-full relative rounded-none overflow-hidden"
+              >
+                <Preview
+                  componentName={v.component}
+                  defaults={v.params.reduce<Record<string, unknown>>((acc, p) => {
+                    acc[p.name] = p.defaultValue;
+                    return acc;
+                  }, {})}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/35 to-black/65" />
+        </div>
+        <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 py-12 lg:py-16 space-y-6">
           <div className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
             <span className="h-px w-10 bg-gradient-to-r from-white/40 to-transparent" />
             <span>Spatial UI Playground</span>
@@ -111,43 +130,6 @@ export default function Home() {
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
               <span className="w-2 h-2 rounded-full bg-white/50 shadow-[0_0_10px_rgba(255,255,255,0.25)]" />
               <span>Glassmorphic edge-wire vibe</span>
-            </div>
-          </div>
-        </div>
-        <div className="space-y-3">
-          <p className="wire-text text-xs">Live previews</p>
-          <div className="relative -mx-4 md:-mx-12">
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-white/6 via-white/3 to-white/6 blur-3xl opacity-50 pointer-events-none" />
-            <div className="snap-x snap-mandatory overflow-x-auto overflow-y-hidden h-[calc(100vh-220px)] w-screen flex gap-5 px-2 md:px-4">
-              {liveScroller.map((v) => (
-                <div
-                  key={v.slug}
-                  className="snap-start min-w-[90vw] lg:min-w-[75vw] h-full relative rounded-3xl overflow-hidden border border-white/10 bg-black/60"
-                >
-                  <div className="absolute inset-0 opacity-45 pointer-events-none">
-                    <Preview
-                      componentName={v.component}
-                      defaults={v.params.reduce<Record<string, unknown>>((acc, p) => {
-                        acc[p.name] = p.defaultValue;
-                        return acc;
-                      }, {})}
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-black/35" />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6 flex items-end justify-between gap-4">
-                    <div className="space-y-2 max-w-xl">
-                      <p className="text-2xl font-semibold glow-heading">{v.title}</p>
-                      <p className="text-sm text-muted-foreground">{v.description}</p>
-                      <p className="text-xs text-muted-foreground font-mono bg-white/5 px-2 py-1 rounded border border-white/10 inline-block w-fit">
-                        /viz/{v.slug}
-                      </p>
-                    </div>
-                    <Button asChild className="bg-white/12 text-foreground hover:bg-white/16 border border-white/12">
-                      <Link href={`/viz/${v.slug}`}>Open</Link>
-                    </Button>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
