@@ -30,6 +30,76 @@ const components: Record<string, React.ComponentType<VizParams>> = {
       ),
     { ssr: false }
   ),
+  GalaxyNetworkViz: dynamic(
+    () =>
+      import("@/components/visualizations/GalaxyNetworkViz").then(
+        (m) => m.GalaxyNetworkViz as React.ComponentType<VizParams>
+      ),
+    { ssr: false }
+  ),
+  TerrainHeightmapViz: dynamic(
+    () =>
+      import("@/components/visualizations/TerrainHeightmapViz").then(
+        (m) => m.TerrainHeightmapViz as React.ComponentType<VizParams>
+      ),
+    { ssr: false }
+  ),
+  VoronoiWavesViz: dynamic(
+    () =>
+      import("@/components/visualizations/VoronoiWavesViz").then(
+        (m) => m.VoronoiWavesViz as React.ComponentType<VizParams>
+      ),
+    { ssr: false }
+  ),
+  VolumeFieldViz: dynamic(
+    () =>
+      import("@/components/visualizations/VolumeFieldViz").then(
+        (m) => m.VolumeFieldViz as React.ComponentType<VizParams>
+      ),
+    { ssr: false }
+  ),
+  RibbonFlowViz: dynamic(
+    () =>
+      import("@/components/visualizations/RibbonFlowViz").then(
+        (m) => m.RibbonFlowViz as React.ComponentType<VizParams>
+      ),
+    { ssr: false }
+  ),
+  LissajousRibbonViz: dynamic(
+    () =>
+      import("@/components/visualizations/LissajousRibbonViz").then(
+        (m) => m.LissajousRibbonViz as React.ComponentType<VizParams>
+      ),
+    { ssr: false }
+  ),
+  ParticleFountainViz: dynamic(
+    () =>
+      import("@/components/visualizations/ParticleFountainViz").then(
+        (m) => m.ParticleFountainViz as React.ComponentType<VizParams>
+      ),
+    { ssr: false }
+  ),
+  FractalCubesViz: dynamic(
+    () =>
+      import("@/components/visualizations/FractalCubesViz").then(
+        (m) => m.FractalCubesViz as React.ComponentType<VizParams>
+      ),
+    { ssr: false }
+  ),
+  SuperformulaBloomViz: dynamic(
+    () =>
+      import("@/components/visualizations/SuperformulaBloomViz").then(
+        (m) => m.SuperformulaBloomViz as React.ComponentType<VizParams>
+      ),
+    { ssr: false }
+  ),
+  NoiseTunnelViz: dynamic(
+    () =>
+      import("@/components/visualizations/NoiseTunnelViz").then(
+        (m) => m.NoiseTunnelViz as React.ComponentType<VizParams>
+      ),
+    { ssr: false }
+  ),
 };
 
 function VizClient({
@@ -63,7 +133,7 @@ export default function VizDetailPage({ params }: Props) {
 
   return (
     <div className="grid gap-4 lg:grid-cols-[1fr_360px]">
-      <Card className="overflow-hidden">
+      <Card className="overflow-hidden surface-card rounded-2xl">
         <CardContent className="p-0">
           <div className="h-[60vh] lg:h-[70vh] bg-black">
             <VizClient config={config} Component={VizComponent} />
@@ -71,10 +141,12 @@ export default function VizDetailPage({ params }: Props) {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="surface-card rounded-2xl">
         <CardHeader>
-          <CardTitle>{config.title}</CardTitle>
-          <CardDescription>{config.description}</CardDescription>
+          <CardTitle className="glow-heading">{config.title}</CardTitle>
+          <CardDescription className="text-muted-foreground/90">
+            {config.description}
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <VizParamControls config={config} />

@@ -3,67 +3,58 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
+  --background: 225 20% 7%;
+  --foreground: 210 18% 92%;
 
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted: 225 12% 14%;
+  --muted-foreground: 215 12% 72%;
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
+  --popover: 225 20% 7%;
+  --popover-foreground: 210 18% 92%;
 
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
+  --border: 225 12% 16%;
+  --input: 225 12% 16%;
 
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
+  --card: 225 18% 9%;
+  --card-foreground: 210 18% 92%;
 
-  --primary: 222.2 47.4% 11.2%;
-  --primary-foreground: 210 40% 98%;
+  --primary: 187 55% 48%;
+  --primary-foreground: 225 20% 6%;
 
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 225 14% 18%;
+  --secondary-foreground: 210 18% 92%;
 
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
+  --accent: 195 40% 46%;
+  --accent-foreground: 225 20% 6%;
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
 
-  --ring: 215 20.2% 65.1%;
+  --ring: 187 55% 48%;
 
   --radius: 0.75rem;
 }
 
 .dark {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
-
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-
-  --popover: 222.2 84% 4.9%;
-  --popover-foreground: 210 40% 98%;
-
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-
-  --card: 222.2 84% 4.9%;
-  --card-foreground: 210 40% 98%;
-
-  --primary: 210 40% 98%;
-  --primary-foreground: 222.2 47.4% 11.2%;
-
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
-
-  --accent: 217.2 32.6% 17.5%;
-  --accent-foreground: 210 40% 98%;
-
+  --background: 225 20% 7%;
+  --foreground: 210 18% 92%;
+  --muted: 225 12% 14%;
+  --muted-foreground: 215 12% 72%;
+  --popover: 225 20% 7%;
+  --popover-foreground: 210 18% 92%;
+  --border: 225 12% 16%;
+  --input: 225 12% 16%;
+  --card: 225 18% 9%;
+  --card-foreground: 210 18% 92%;
+  --primary: 187 55% 48%;
+  --primary-foreground: 225 20% 6%;
+  --secondary: 225 14% 18%;
+  --secondary-foreground: 210 18% 92%;
+  --accent: 195 40% 46%;
+  --accent-foreground: 225 20% 6%;
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 40% 98%;
-
-  --ring: 215 20.2% 65.1%;
+  --ring: 187 55% 48%;
 }
 
 @layer base {
@@ -72,9 +63,66 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
     min-height: 100vh;
     font-family: "Inter", system-ui, -apple-system, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
+    background: radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.05), transparent 34%),
+      radial-gradient(circle at 72% 20%, rgba(150, 180, 195, 0.07), transparent 30%),
+      hsl(var(--background));
+    position: relative;
+    overflow-x: hidden;
   }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 64px 64px, 64px 64px;
+  mix-blend-mode: screen;
+  opacity: 0.16;
+  z-index: 0;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.04), transparent 55%);
+  opacity: 0.28;
+  mix-blend-mode: screen;
+  z-index: 0;
+}
+
+.surface-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.006));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+}
+
+.surface-card:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.035);
+}
+
+.wire-text {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.glow-heading {
+  color: hsl(var(--foreground));
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.08);
+}
+
+.edge-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
 }

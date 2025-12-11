@@ -6,6 +6,13 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 type Props = { config: VizConfig };
 
@@ -48,6 +55,29 @@ export function VizParamControls({ config }: Props) {
                 onChange={(e) => setParam(p.name, e.target.value)}
                 className="h-10 p-1"
               />
+            </div>
+          );
+        }
+
+        if (p.type === "select" && p.options) {
+          return (
+            <div key={p.name} className="space-y-2 text-sm">
+              <Label htmlFor={p.name}>{p.label}</Label>
+              <Select
+                value={String(value)}
+                onValueChange={(v) => setParam(p.name, v)}
+              >
+                <SelectTrigger id={p.name}>
+                  <SelectValue placeholder={p.label} />
+                </SelectTrigger>
+                <SelectContent>
+                  {p.options.map((opt) => (
+                    <SelectItem key={opt} value={opt}>
+                      {opt}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           );
         }
