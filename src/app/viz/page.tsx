@@ -149,8 +149,8 @@ export default function VizIndexPage() {
       <div className="grid gap-5 md:grid-cols-3">
       {visualizations.map((v) => (
         <Card key={v.slug} className="flex flex-col surface-card rounded-xl transition hover:-translate-y-1">
-          <CardContent className="space-y-3">
-            <div className="h-48 rounded-xl overflow-hidden border border-white/10">
+          <CardContent className="space-y-3 p-0">
+            <div className="-mx-6 -mt-6 h-48 overflow-hidden border-b border-white/10">
               <Preview
                 componentName={v.component}
                 defaults={v.params.reduce<Record<string, unknown>>((acc, p) => {
@@ -166,7 +166,7 @@ export default function VizIndexPage() {
               {v.description}
             </CardDescription>
           </CardHeader>
-          <CardContent className="flex-1 pt-0">
+          <CardContent className="flex-1 pt-0 px-6 pb-6">
             <p className="text-xs text-muted-foreground font-mono bg-white/5 px-2 py-1 rounded border border-white/10 inline-block">
               /viz/{v.slug}
             </p>
