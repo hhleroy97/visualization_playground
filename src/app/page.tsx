@@ -134,15 +134,17 @@ export default function Home() {
                   key={v.slug}
                   className="snap-start min-w-[90vw] lg:min-w-[75vw] h-full relative rounded-3xl overflow-hidden border border-white/10 bg-black/60"
                 >
-                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_42%),radial-gradient(circle_at_80%_30%,rgba(180,210,255,0.25),transparent_48%)]" />
-                  <Preview
-                    componentName={v.component}
-                    defaults={v.params.reduce<Record<string, unknown>>((acc, p) => {
-                      acc[p.name] = p.defaultValue;
-                      return acc;
-                    }, {})}
-                  />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/40 to-transparent p-6 flex items-end justify-between gap-4">
+                  <div className="absolute inset-0 opacity-45 pointer-events-none">
+                    <Preview
+                      componentName={v.component}
+                      defaults={v.params.reduce<Record<string, unknown>>((acc, p) => {
+                        acc[p.name] = p.defaultValue;
+                        return acc;
+                      }, {})}
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-black/35" />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6 flex items-end justify-between gap-4">
                     <div className="space-y-2 max-w-xl">
                       <p className="text-2xl font-semibold glow-heading">{v.title}</p>
                       <p className="text-sm text-muted-foreground">{v.description}</p>
