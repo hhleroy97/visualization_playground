@@ -91,7 +91,7 @@ export default function Home() {
   const liveScroller = visualizations.filter((v) => v.featured).slice(0, 8);
 
   return (
-    <div className="space-y-10 max-w-6xl">
+    <div className="space-y-12 w-full max-w-none px-4 md:px-8">
       <section className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] items-center surface-card p-8 md:p-10 rounded-2xl">
         <div className="space-y-4">
           <div className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
@@ -116,9 +116,9 @@ export default function Home() {
         </div>
         <div className="space-y-3">
           <p className="wire-text text-xs">Live previews</p>
-          <div className="relative -mx-6 md:-mx-10">
+          <div className="relative -mx-4 md:-mx-12">
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-white/6 via-white/3 to-white/6 blur-3xl opacity-50 pointer-events-none" />
-            <div className="snap-x snap-mandatory overflow-x-auto overflow-y-hidden h-[82vh] flex gap-5 px-2 md:px-4">
+            <div className="snap-x snap-mandatory overflow-x-auto overflow-y-hidden h-[calc(100vh-220px)] w-screen flex gap-5 px-2 md:px-4">
               {liveScroller.map((v) => (
                 <div
                   key={v.slug}
