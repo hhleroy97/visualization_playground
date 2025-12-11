@@ -150,7 +150,7 @@ export default function VizIndexPage() {
       {visualizations.map((v) => (
         <Card key={v.slug} className="flex flex-col surface-card rounded-xl transition hover:-translate-y-1">
           <CardContent className="space-y-3 p-0">
-            <div className="-mx-6 -mt-6 h-48 overflow-hidden border-b border-white/10">
+            <div className="h-48 w-full overflow-hidden border-b border-white/10 rounded-t-xl">
               <Preview
                 componentName={v.component}
                 defaults={v.params.reduce<Record<string, unknown>>((acc, p) => {
