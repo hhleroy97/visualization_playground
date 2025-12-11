@@ -29,6 +29,34 @@ const previewComponents: Record<string, React.ComponentType<Record<string, unkno
       ),
     { ssr: false }
   ),
+  LissajousRibbonViz: dynamic(
+    () =>
+      import("@/components/visualizations/LissajousRibbonViz").then(
+        (m) => m.LissajousRibbonViz as React.ComponentType<Record<string, unknown>>
+      ),
+    { ssr: false }
+  ),
+  ParticleFountainViz: dynamic(
+    () =>
+      import("@/components/visualizations/ParticleFountainViz").then(
+        (m) => m.ParticleFountainViz as React.ComponentType<Record<string, unknown>>
+      ),
+    { ssr: false }
+  ),
+  FractalCubesViz: dynamic(
+    () =>
+      import("@/components/visualizations/FractalCubesViz").then(
+        (m) => m.FractalCubesViz as React.ComponentType<Record<string, unknown>>
+      ),
+    { ssr: false }
+  ),
+  SuperformulaBloomViz: dynamic(
+    () =>
+      import("@/components/visualizations/SuperformulaBloomViz").then(
+        (m) => m.SuperformulaBloomViz as React.ComponentType<Record<string, unknown>>
+      ),
+    { ssr: false }
+  ),
 };
 
 function Preview({
@@ -60,11 +88,17 @@ function Preview({
 }
 
 export default function Home() {
-  const featured = visualizations
+  const liveScroller = visualizations
     .filter((v) =>
-      ["galaxy-network", "terrain-heightmap", "noise-tunnel"].includes(v.slug)
+      [
+        "noise-tunnel",
+        "lissajous-ribbons",
+        "particle-fountain",
+        "fractal-cubes",
+        "superformula-bloom",
+      ].includes(v.slug)
     )
-    .slice(0, 3);
+    .slice(0, 5);
 
   return (
     <div className="space-y-10 max-w-6xl">
@@ -92,13 +126,13 @@ export default function Home() {
         </div>
         <div className="space-y-3">
           <p className="wire-text text-xs">Live previews</p>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-2">
-            {featured.map((v) => (
+          <div className="snap-y snap-mandatory overflow-y-auto h-[76vh] rounded-2xl border border-white/8 bg-white/2 p-2 space-y-6">
+            {liveScroller.map((v) => (
               <div
                 key={v.slug}
-                className="col-span-1 surface-card rounded-xl p-3 border border-white/8"
+                className="snap-start min-h-[70vh] grid lg:grid-cols-[1.2fr_0.8fr] gap-4 surface-card rounded-xl p-4 border border-white/10"
               >
-                <div className="h-36 w-full overflow-hidden rounded-lg border border-white/10">
+                <div className="h-[60vh] w-full overflow-hidden rounded-lg border border-white/10">
                   <Preview
                     componentName={v.component}
                     defaults={v.params.reduce<Record<string, unknown>>((acc, p) => {
@@ -107,11 +141,15 @@ export default function Home() {
                     }, {})}
                   />
                 </div>
-                <div className="mt-2 space-y-1">
-                  <p className="text-sm font-semibold glow-heading">{v.title}</p>
-                  <p className="text-xs text-muted-foreground line-clamp-2">
-                    {v.description}
+                <div className="space-y-3 flex flex-col justify-center">
+                  <p className="text-xl font-semibold glow-heading">{v.title}</p>
+                  <p className="text-sm text-muted-foreground">{v.description}</p>
+                  <p className="text-xs text-muted-foreground font-mono bg-white/5 px-2 py-1 rounded border border-white/10 inline-block w-fit">
+                    /viz/{v.slug}
                   </p>
+                  <Button asChild className="w-fit bg-white/8 text-foreground hover:bg-white/12 border border-white/10">
+                    <Link href={`/viz/${v.slug}`}>Open preview</Link>
+                  </Button>
                 </div>
               </div>
             ))}
