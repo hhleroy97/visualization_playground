@@ -68,37 +68,37 @@ export default function Home() {
 
   return (
     <div className="space-y-10 max-w-6xl">
-      <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-center surface-card p-8 md:p-10 rounded-2xl">
+      <section className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] items-center surface-card p-8 md:p-10 rounded-2xl">
         <div className="space-y-4">
-          <div className="flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-muted-foreground">
-            <span className="h-px w-10 bg-gradient-to-r from-white/50 to-transparent" />
-            <span>Visualization Playground</span>
+          <div className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+            <span className="h-px w-10 bg-gradient-to-r from-white/40 to-transparent" />
+            <span>Spatial UI Playground</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-semibold glow-heading leading-tight">
-            Sleek, reactive 3D visuals. No boilerplate.
+            Minimal, alluring 3D scenes for the web.
           </h1>
-          <p className="text-muted-foreground/90 max-w-3xl">
-            Next.js + React Three Fiber + Drei + Zustand. Explore living previews, tweak parameters in real time, and ship bold edge-wire aesthetics without wiring up data.
+          <p className="text-muted-foreground/85 max-w-3xl">
+            React + Three + Zustand with a soft glass aesthetic. Try live previews, tweak params on the fly, and ship without chasing data plumbing.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Button asChild className="bg-white/10 text-foreground hover:bg-white/15 border border-white/15">
-              <Link href="/viz">Open visualization library</Link>
+            <Button asChild className="bg-white/8 text-foreground hover:bg-white/12 border border-white/10">
+              <Link href="/viz">Explore visuals</Link>
             </Button>
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <span className="w-2 h-2 rounded-full bg-white/60 shadow-[0_0_12px_rgba(255,255,255,0.3)]" />
-              <span>Edge-wire aesthetic enabled</span>
+              <span className="w-2 h-2 rounded-full bg-white/50 shadow-[0_0_10px_rgba(255,255,255,0.25)]" />
+              <span>Glassmorphic edge-wire vibe</span>
             </div>
           </div>
         </div>
         <div className="space-y-3">
           <p className="wire-text text-xs">Live previews</p>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-2">
             {featured.map((v) => (
               <div
                 key={v.slug}
-                className="col-span-1 surface-card rounded-xl p-3 border border-white/10"
+                className="col-span-1 surface-card rounded-xl p-3 border border-white/8"
               >
-                <div className="h-32 w-full overflow-hidden rounded-lg border border-white/10">
+                <div className="h-36 w-full overflow-hidden rounded-lg border border-white/10">
                   <Preview
                     componentName={v.component}
                     defaults={v.params.reduce<Record<string, unknown>>((acc, p) => {
@@ -180,8 +180,8 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="text-xs text-muted-foreground pt-2">
-          Team access: internal <Link href="/admin" className="underline underline-offset-4 hover:text-foreground">admin prototype</Link> remains available but is not part of the main CTA.
+        <div className="text-xs text-muted-foreground/80 pt-2">
+          Internal controls live at <Link href="/admin" className="underline underline-offset-4 hover:text-foreground">/admin</Link>.
         </div>
       </section>
     </div>
