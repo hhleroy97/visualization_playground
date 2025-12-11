@@ -88,17 +88,7 @@ function Preview({
 }
 
 export default function Home() {
-  const liveScroller = visualizations
-    .filter((v) =>
-      [
-        "noise-tunnel",
-        "lissajous-ribbons",
-        "particle-fountain",
-        "fractal-cubes",
-        "superformula-bloom",
-      ].includes(v.slug)
-    )
-    .slice(0, 5);
+  const liveScroller = visualizations.filter((v) => v.featured).slice(0, 8);
 
   return (
     <div className="space-y-10 max-w-6xl">

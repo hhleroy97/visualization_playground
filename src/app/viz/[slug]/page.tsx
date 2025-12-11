@@ -148,8 +148,23 @@ export default function VizDetailPage({ params }: Props) {
             {config.description}
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="space-y-4">
           <VizParamControls config={config} />
+          {config.tourTips && config.tourTips.length > 0 && (
+            <div className="space-y-2">
+              <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
+                Quick tour
+              </p>
+              <ul className="space-y-1 text-sm text-muted-foreground">
+                {config.tourTips.map((tip) => (
+                  <li key={tip} className="flex gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-white/40" />
+                    <span>{tip}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>

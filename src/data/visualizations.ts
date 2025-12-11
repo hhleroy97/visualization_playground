@@ -25,6 +25,8 @@ export type VizConfig = {
   component: string;
   params: VizParam[];
   defaultData: Record<string, unknown>;
+  featured?: boolean;
+  tourTips?: string[];
 };
 
 export const visualizations: VizConfig[] = [
@@ -132,6 +134,12 @@ export const visualizations: VizConfig[] = [
     title: "Galaxy Network",
     description: "3D force-inspired galaxy clusters with glowing links.",
     component: "GalaxyNetworkViz",
+    featured: true,
+    tourTips: [
+      "Increase linkRange to reveal cross-cluster bridges",
+      "Lower pointSize for starfield sparkle",
+      "Toggle palette to shift the mood",
+    ],
     params: [
       {
         name: "nodeCount",
@@ -366,6 +374,12 @@ export const visualizations: VizConfig[] = [
     title: "Lissajous Ribbons",
     description: "Procedural looping tubes following Lissajous curves.",
     component: "LissajousRibbonViz",
+    featured: true,
+    tourTips: [
+      "Increase twist for denser weaves",
+      "Lower thickness for wire-like threads",
+      "Speed to 1.2 for kinetic gallery feel",
+    ],
     params: [
       {
         name: "ribbonCount",
@@ -418,6 +432,12 @@ export const visualizations: VizConfig[] = [
     title: "Particle Fountain",
     description: "Procedural fountain of instanced sparks with gravity.",
     component: "ParticleFountainViz",
+    featured: true,
+    tourTips: [
+      "Raise count to 400 for dense spray",
+      "Lower gravity for floaty embers",
+      "Spread 1.2 + Speed 1.5 for bloom",
+    ],
     params: [
       {
         name: "count",
@@ -470,6 +490,12 @@ export const visualizations: VizConfig[] = [
     title: "Fractal Cubes",
     description: "Menger-inspired instanced cubes rotating in space.",
     component: "FractalCubesViz",
+    featured: true,
+    tourTips: [
+      "Depth 3 + wireframe on for lattice",
+      "Slow rotationSpeed to 0.3 for drift",
+      "Switch palette to aurora for glow",
+    ],
     params: [
       {
         name: "depth",
@@ -519,6 +545,12 @@ export const visualizations: VizConfig[] = [
     title: "Superformula Bloom",
     description: "Point-cloud petals generated from the superformula.",
     component: "SuperformulaBloomViz",
+    featured: true,
+    tourTips: [
+      "Adjust petals between 2–5 to morph shapes",
+      "PointSize 0.08 for denser bloom",
+      "RotationSpeed 0.8 for breathing motion",
+    ],
     params: [
       {
         name: "m",
@@ -598,6 +630,12 @@ export const visualizations: VizConfig[] = [
     title: "Noise Tunnel",
     description: "Procedural tunnel of wobbling rings of points.",
     component: "NoiseTunnelViz",
+    featured: true,
+    tourTips: [
+      "RingCount 80 for deeper perspective",
+      "Wobble 0.5 for heavy distortions",
+      "Speed 1.4 for fast travel",
+    ],
     params: [
       {
         name: "ringCount",
