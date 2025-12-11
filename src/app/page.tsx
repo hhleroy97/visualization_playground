@@ -84,13 +84,6 @@ export default function Home() {
             <Button asChild className="bg-white/10 text-foreground hover:bg-white/15 border border-white/15">
               <Link href="/viz">Open visualization library</Link>
             </Button>
-            <Button
-              variant="outline"
-              className="border-white/20 text-foreground hover:bg-white/5"
-              asChild
-            >
-              <Link href="/admin">Admin prototype</Link>
-            </Button>
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
               <span className="w-2 h-2 rounded-full bg-white/60 shadow-[0_0_12px_rgba(255,255,255,0.3)]" />
               <span>Edge-wire aesthetic enabled</span>
@@ -186,6 +179,9 @@ export default function Home() {
               Config-driven registry, dynamic imports, Zustand param store, live previews on `/viz`.
             </p>
           </div>
+        </div>
+        <div className="text-xs text-muted-foreground pt-2">
+          Team access: internal <Link href="/admin" className="underline underline-offset-4 hover:text-foreground">admin prototype</Link> remains available but is not part of the main CTA.
         </div>
       </section>
     </div>
