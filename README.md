@@ -73,3 +73,7 @@ Other scripts:
 
 - Tailwind classes come from shadcn’s design tokens; feel free to restyle as needed.
 - All visualization parameters flow through `useVizStore`, making it straightforward to add new controls or external data sources later.
+- Landing hero height is tied to `--header-height` and `--page-vertical-padding` to keep the above-the-fold area (including the header) aligned to the viewport.
+- Brutalist hero styling uses `--brutal-accent`, `brutal-grid`, and `brutal-outline` helpers layered over the background visualization preview. Cycle featured hero scenes with the pills/controls to swap the live background + text block in place.
+- Hero text block now sits at the bottom of the viewer with a lighter overlay so the live visualization remains more visible behind the content, and the header carries the same brutalist glass treatment. Buttons now include a fluid glass style for nav + hero controls.
+- Added three dataset-free demo presets on `/viz`: “Nebula Threads” (Lissajous ribbons), “Ember Spray” (particle fountain), and “Prismatic Lattice” (fractal cubes) to quickly try different moods without new data.

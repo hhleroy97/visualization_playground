@@ -20,6 +20,8 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        glass:
+          "relative isolate overflow-hidden border-2 border-white/60 bg-white/10 text-white shadow-[6px_6px_0_rgba(0,0,0,0.45)] backdrop-blur-xl transition-transform hover:-translate-y-0.5 hover:shadow-[8px_8px_0_rgba(0,0,0,0.55)] before:absolute before:inset-[-40%] before:bg-[conic-gradient(from_180deg_at_50%_50%,rgba(255,255,255,0.55)_0deg,rgba(255,255,255,0)_120deg,rgba(255,255,255,0)_240deg,rgba(255,255,255,0.55)_360deg)] before:opacity-40 before:blur-3xl before:animate-[spin_12s_linear_infinite] after:absolute after:inset-0 after:bg-gradient-to-br after:from-white/12 after:via-white/4 after:to-white/2",
       },
       size: {
         default: "h-10 px-4 py-2",
